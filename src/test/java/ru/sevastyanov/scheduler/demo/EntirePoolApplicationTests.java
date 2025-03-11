@@ -2,9 +2,10 @@ package ru.sevastyanov.scheduler.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import ru.gpb.entirepool.EntirePoolApplication;
 
-@SpringBootTest
-class SchedulerDemoApplicationTests {
+@SpringBootTest(classes = {EntirePoolApplication.class})
+class EntirePoolApplicationTests {
 
 	@Test
 	void contextLoads() {
