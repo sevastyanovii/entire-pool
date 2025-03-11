@@ -37,7 +37,7 @@ public class EntirePoolApplication {
     return new ThreadPoolTaskScheduler(){
 			{
 				setPoolSize(10);
-				setThreadNamePrefix("taskSchedule--");
+				setThreadNamePrefix("scheduler-");
 			}
 
 		};
@@ -50,6 +50,7 @@ public class EntirePoolApplication {
 				.maxPoolSize(maxPoolSize)
 				.queueCapacity(queueCapacity)
 				.allowCoreThreadTimeOut(true)
+				.threadNamePrefix("entire-")
 				.build();
 	}
 
