@@ -3,20 +3,18 @@ package ru.gpb.entirepool.sched;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import ru.gpb.entirepool.SleepTaskService;
 
 @Slf4j
-@Service
-@Component
+@Configuration
 @EnableScheduling
 @RequiredArgsConstructor
-public class EntirePoolScheduleService {
+public class EntirePoolSchedulerConfiguration {
 
-  @Value("${executor.max-pool-size:10}")
+  @Value("${spring.datasource.hikari.maximum-pool-size:10}")
   private final int maxPoolSize;
 
   private final SleepTaskService taskService;

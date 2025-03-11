@@ -11,6 +11,7 @@ spring:
       minimum-idle: ${DB_POOL_MINIMUM_IDLE:1}
       maximum-pool-size: ${DB_POOL_MAXSIZE:10}
       auto-commit: false
+      idle-timeout: 60000
   jpa:
     properties:
       hibernate:
