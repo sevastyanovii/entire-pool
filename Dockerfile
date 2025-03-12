@@ -23,7 +23,7 @@ RUN groupadd -r app && useradd -r -g app -d /home/app -s /sbin/nologin -c "Docke
 # Set the home directory to our app user's home.
 ENV HOME=/home/app
 ENV APP=entire-pool.jar
-ENV APP_HOME=/home/app/ims
+ENV APP_HOME=/home/app/entire-pool
 
 ## SETTING UP THE APP ##
 RUN mkdir -p $APP_HOME
