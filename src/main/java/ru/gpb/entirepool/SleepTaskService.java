@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.sql.DataSource;
 
 @Slf4j
 @Service
@@ -22,14 +21,17 @@ public class SleepTaskService {
 
   @Async("entirePoolExecutor")
   @Transactional(readOnly = true)
-  public void execInConnection() {
-    try {
-      log.info("Begin to sleep.............");
-      execDbSleep();
-      log.info("End to sleep");
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+  public void execInConnectionAsync() {
+    log.info("Begin to sleep.............");
+    execDbSleep();
+    log.info("End to sleep");
+  }
+
+  @Transactional(readOnly = true)
+  public void execInConnectionSync() {
+    log.info("Begin to sleep in SYNC MODE .............");
+    execDbSleep();
+    log.info("End to sleep in SYNC MODE");
   }
 
   private void execDbSleep() {

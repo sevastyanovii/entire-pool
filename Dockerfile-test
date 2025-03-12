@@ -1,0 +1,4 @@
+FROM openjdk:11
+MAINTAINER gazpombank Ltd
+COPY target/entire-pool.jar entire-pool.jar
+ENTRYPOINT ["java","-jar","/entire-pool.jar"]
