@@ -24,7 +24,7 @@ public class EntirePoolSchedulerConfiguration {
 
   private final SleepTaskService taskService;
 
-  @Scheduled(fixedRateString = "${scheduler.fixed-rate-ms:1500}")
+  @Scheduled(fixedRateString = "${scheduler.fixed-rate-ms:1500}", initialDelay = 5000)
   public void execute() {
     for (int i = 0; i < maxPoolSize; i++) {
       taskService.execInConnectionAsync();
