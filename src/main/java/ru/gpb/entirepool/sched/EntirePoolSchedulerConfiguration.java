@@ -8,6 +8,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import ru.gpb.entirepool.SleepTaskService;
 
+/**
+ * Конфигурация для запуска фоновых задач
+ *
+ * @author Ivan Sevastyanov
+ */
 @Slf4j
 @Configuration
 @EnableScheduling

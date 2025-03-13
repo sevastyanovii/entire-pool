@@ -9,6 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
+/**
+ * Сервис для выполнения задач в БД
+ *
+ * @author Ivan Sevastyanov
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor

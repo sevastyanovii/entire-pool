@@ -2,6 +2,11 @@
 Сервис предназначен для тестирования HA PROXY
 
 ## Поддерживаемые параметры
+* POSTGRES_URL:jdbc:postgresql://postgres:5432/db_entirepool?currentSchema="q_eco_d_epool"
+* POSTGRES_USER:q_eco_d_epool
+* POSTGRES_PASSWORD:q_eco_d_epool_pwd
+* DB_POOL_MINIMUM_IDLE:1
+* DB_POOL_MAXSIZE:10
 * use-connection-ms:2000 - время использования соединения потоком
 * executor.max-pool-size:10 - максимльное количество входящих потоков
 * executor.core-pool-size:1 - количество потоков при нулевой очереди задач

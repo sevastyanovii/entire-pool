@@ -10,6 +10,11 @@ import ru.gpb.entirepool.sched.EntirePoolSchedulerConfiguration;
 
 import java.util.Optional;
 
+/**
+ * Контролер для управления/тестирования сервиса
+ *
+ * @author Ivan Sevastyanov
+ */
 @RestController
 @RequiredArgsConstructor
 public class EntirePoolController {
