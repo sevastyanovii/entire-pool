@@ -2,7 +2,6 @@ package ru.gpb.entirepool;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,10 +18,8 @@ import javax.persistence.EntityManager;
 @RequiredArgsConstructor
 public class SleepTaskService {
 
-  @Value("${use-connection-ms:2000}")
-  private final long sleepMs;
-
   private final EntityManager em;
+  private final EntirePoolProperties properties;
 
   @Async("entirePoolExecutor")
   @Transactional(readOnly = true)
@@ -40,7 +37,7 @@ public class SleepTaskService {
   }
 
   private void execDbSleep() {
-    float timeout = 1e-3f*sleepMs;
+    float timeout = 1e-3f*properties.getExecutorUseConnectionMs();
     em.createNativeQuery(
             String.format("do $$\n" +
                 "declare\n" +

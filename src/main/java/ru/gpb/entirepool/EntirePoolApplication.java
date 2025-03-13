@@ -1,7 +1,6 @@
 package ru.gpb.entirepool;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.task.TaskExecutorBuilder;
@@ -22,14 +21,7 @@ import java.util.concurrent.Executor;
 @RequiredArgsConstructor
 public class EntirePoolApplication {
 
-	@Value("${executor.max-pool-size:10}")
-	private final int maxPoolSize;
-
-	@Value("${executor.core-pool-size:1}")
-	private final int corePoolSize;
-
-	@Value("${executor.queue-capacity:50}")
-	private final int queueCapacity;
+	private final EntirePoolProperties properties;
 
 	public static void main(String[] args) {
 		SpringApplication.run(EntirePoolApplication.class, args);
@@ -49,9 +41,9 @@ public class EntirePoolApplication {
 	@Bean(name = "entirePoolExecutor")
 	public Executor imsExecutor() {
 		return new TaskExecutorBuilder()
-				.corePoolSize(corePoolSize)
-				.maxPoolSize(maxPoolSize)
-				.queueCapacity(queueCapacity)
+				.corePoolSize(properties.getExecutorCorePoolSize())
+				.maxPoolSize(properties.getExecutorMaxPoolSize())
+				.queueCapacity(properties.getExecutorQueueCapacity())
 				.allowCoreThreadTimeOut(true)
 				.threadNamePrefix("entire-")
 				.build();

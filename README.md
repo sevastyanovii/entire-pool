@@ -7,12 +7,11 @@
 * POSTGRES_PASSWORD:q_eco_d_epool_pwd
 * DB_POOL_MINIMUM_IDLE:1
 * DB_POOL_MAXSIZE:10
-* use-connection-ms:2000 - время использования соединения потоком
-* executor.max-pool-size:10 - максимльное количество входящих потоков
-* executor.core-pool-size:1 - количество потоков при нулевой очереди задач
-* executor.queue-capacity:50 - размер очереди задач
-* scheduler.fixed-rate-ms:1500 - периодичность генерации задач для использования соединения с БД
-
+* EXECUTOR_MAX_POOL_SIZE:10 - максимльное количество входящих потоков
+* EXECUTOR_CORE_POOL_SIZE:1 - количество потоков при нулевой очереди задач
+* EXECUTOR_QUEUE_CAPACITY:50 - размер очереди задач
+* EXECUTOR_USE_CONNECTION_MS:2000 - время использования соединения потоком
+* SCHEDULER_FIXED_RATE_MS:1500 - периодичность генерации задач для использования соединения с БД
 
 ## Запуск контейнера с настройками пулов по умолчанию 
 ```shell
