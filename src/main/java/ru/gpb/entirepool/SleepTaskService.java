@@ -26,19 +26,19 @@ public class SleepTaskService {
   @Transactional(readOnly = true)
   public void execInConnectionAsync() {
     log.info("Begin to sleep.............");
-    execDbSleep();
+    execDbSleep(properties.getExecutorUseConnectionMs());
     log.info("End to sleep");
   }
 
   @Transactional(readOnly = true)
   public void execInConnectionSync() {
     log.info("Begin to sleep in SYNC MODE .............");
-    execDbSleep();
+    execDbSleep(0);
     log.info("End to sleep in SYNC MODE");
   }
 
-  private void execDbSleep() {
-    float timeout = 1e-3f*properties.getExecutorUseConnectionMs();
+  private void execDbSleep(long sleepMs) {
+    float timeout = 1e-3f*sleepMs;
     em.createNativeQuery(
             String.format(Locale.ENGLISH, "do $$\n" +
                 "declare\n" +

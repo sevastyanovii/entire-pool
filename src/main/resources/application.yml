@@ -12,14 +12,15 @@ spring:
       maximum-pool-size: ${DB_POOL_MAXSIZE:10}
       auto-commit: false
       idle-timeout: 60000
+      connection-timeout: 5000
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL10Dialect
 
 settings:
-  executorMaxPoolSize: ${EXECUTOR_MAX_POOL_SIZE:10}
+  executorMaxPoolSize: ${EXECUTOR_MAX_POOL_SIZE:20}
   executorCorePoolSize: ${EXECUTOR_CORE_POOL_SIZE:1}
-  executorQueueCapacity: ${EXECUTOR_QUEUE_CAPACITY:50 }
-  executorUseConnectionMs: ${EXECUTOR_USE_CONNECTION_MS:2000}
-  schedulerFixedRateMs: ${SCHEDULER_FIXED_RATE_MS:1500 }
+  executorQueueCapacity: ${EXECUTOR_QUEUE_CAPACITY:10}
+  executorUseConnectionMs: ${EXECUTOR_USE_CONNECTION_MS:15000}
+  schedulerFixedRateMs: ${SCHEDULER_FIXED_RATE_MS:1500}
