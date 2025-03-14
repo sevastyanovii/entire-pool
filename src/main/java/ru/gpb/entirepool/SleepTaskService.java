@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.Locale;
 
 /**
  * Сервис для выполнения задач в БД
@@ -39,11 +40,11 @@ public class SleepTaskService {
   private void execDbSleep() {
     float timeout = 1e-3f*properties.getExecutorUseConnectionMs();
     em.createNativeQuery(
-            String.format("do $$\n" +
+            String.format(Locale.ENGLISH, "do $$\n" +
                 "declare\n" +
                 "  l_str varchar(255);\n" +
                 "begin\n" +
-                "  select pg_sleep(%s) into l_str;\n" +
+                "  select pg_sleep(%.3f) into l_str;\n" +
                 "  \n" +
                 "end;\n" +
                 "$$ language 'plpgsql';", timeout))
