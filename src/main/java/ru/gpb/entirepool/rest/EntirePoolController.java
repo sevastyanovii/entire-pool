@@ -44,7 +44,6 @@ public class EntirePoolController {
   public ResponseEntity<String> sleep() {
     return Try.run(service::execInConnectionSync)
         .onSuccess(data -> log.info("Succeeded test."))
-        .map(data -> ResponseEntity.of(Optional.of("TEST IS SUCCEEDED")))
         .onFailure(ex -> log.error("Failure test. Error: " + ex.getMessage(), ex))
         .fold(ex -> ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(ex.getMessage())
             , data -> ResponseEntity.of(Optional.of("TEST IS SUCCEEDED")));
